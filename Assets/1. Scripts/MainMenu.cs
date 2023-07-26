@@ -6,20 +6,20 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject missionView, killView;
 
-    // °ÔÀÓ Á¾·á ¹öÆ° ´©¸£¸é È£Ãâ
+    // ê²Œì„ ì¢…ë£Œ ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickQuit()
     {
-        // À¯´ÏÆ¼ ¿¡µğÅÍ
+        // ìœ ë‹ˆí‹° ì—ë””í„°
 #if UNITY_EDITOR
         UnityEditor.EditorApplication.isPlaying = false;
 
-        // ¾Èµå·ÎÀÌµå
+        // ì•ˆë“œë¡œì´ë“œ
 #else
 Application.Quit();
 #endif
     }
 
-    // ¹Ì¼Ç ¹öÆ° ´©¸£¸é È£Ãâ
+    // ë¯¸ì…˜ ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickMission()
     {
         gameObject.SetActive(false);
@@ -34,7 +34,7 @@ Application.Quit();
     }
 
 
-    // Å³ ¹öÆ° ´©¸£¸é È£Ãâ
+    // í‚¬ ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickKill()
     {
         gameObject.SetActive(false);

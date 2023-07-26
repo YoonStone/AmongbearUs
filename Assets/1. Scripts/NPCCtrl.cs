@@ -18,7 +18,7 @@ public class NPCCtrl : MonoBehaviour
         sr.sprite = idles[rand];
     }
 
-    // Á×Àº ÀÌ¹ÌÁö
+    // ì£½ì€ ì´ë¯¸ì§€
     public void Dead()
     {
         sr.sprite = deads[rand];

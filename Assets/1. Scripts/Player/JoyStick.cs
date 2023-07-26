@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-// 1. ½ºÆ½ µå·¡±× + Á¦ÇÑ
-// 2. µå·¡±×ÇÑ¸¸Å­ Ä³¸¯ÅÍ ÀÌµ¿
+// 1. ìŠ¤í‹± ë“œë˜ê·¸ + ì œí•œ
+// 2. ë“œë˜ê·¸í•œë§Œí¼ ìºë¦­í„° ì´ë™
 
 public class JoyStick : MonoBehaviour
 {
@@ -25,7 +25,7 @@ public class JoyStick : MonoBehaviour
 
     private void Update()
     {
-        // µå·¡±×ÇÏ´Â µ¿¾È
+        // ë“œë˜ê·¸í•˜ëŠ” ë™ì•ˆ
         if (isDrag)
         {
             Vector2 vec = Input.mousePosition - backGround.position;
@@ -36,19 +36,19 @@ public class JoyStick : MonoBehaviour
 
             anim.SetBool("isWalk", true);
 
-            // ¿ŞÂÊÀ¸·Î ÀÌµ¿
+            // ì™¼ìª½ìœ¼ë¡œ ì´ë™
             if (dir.x < 0)
             {
                 transform.localScale = new Vector3(-1, 1, 1);
             }
 
-            // ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿
+            // ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™
             else
             {
                 transform.localScale = new Vector3(1, 1, 1);
             }
 
-            // µå·¡±× ³¡³ª¸é
+            // ë“œë˜ê·¸ ëë‚˜ë©´
             if (Input.GetMouseButtonUp(0))
             {
                 stick.localPosition = new Vector3(0, 0, 0);
@@ -59,7 +59,7 @@ public class JoyStick : MonoBehaviour
         }
     }
 
-    // ½ºÆ½À» ´©¸£¸é È£Ãâ
+    // ìŠ¤í‹±ì„ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickStick()
     {
         isDrag = true;

@@ -19,19 +19,19 @@ public class Mission1 : MonoBehaviour
         missionCtrl_script = FindObjectOfType<MissionCtrl>();
     }
 
-    // ¹Ì¼Ç ½ÃÀÛ
+    // ë¯¸ì…˜ ì‹œì‘
     public void MissionStart()
     {
         anim.SetBool("isUp", true);
         playerCtrl_script = FindObjectOfType<PlayerCtrl>();
 
-        // ÃÊ±âÈ­
+        // ì´ˆê¸°í™”
         for (int i = 0; i < images.Length; i++)
         {
             images[i].color = Color.white;
         }
 
-        // ·£´ı
+        // ëœë¤
         for (int i = 0; i < 4; i++)
         {
             int rand = Random.Range(0, 7);
@@ -40,32 +40,32 @@ public class Mission1 : MonoBehaviour
         }
     }
 
-    // ¿¢½º¹öÆ° ´©¸£¸é È£Ãâ
+    // ì—‘ìŠ¤ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickCancle()
     {
         anim.SetBool("isUp", false);
         playerCtrl_script.MissionEnd();
     }
 
-    // À°°¢Çü ¹öÆ° ´©¸£¸é È£Ãâ
+    // ìœ¡ê°í˜• ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickButton()
     {
         Image img = EventSystem.current.currentSelectedGameObject.GetComponent<Image>();
 
-        // ÇÏ¾á»ö
+        // í•˜ì–€ìƒ‰
         if(img.color == Color.white)
         {
-            // »¡°£»öÀ¸·Î
+            // ë¹¨ê°„ìƒ‰ìœ¼ë¡œ
             img.color = red;
         }
-        // »¡°£»ö
+        // ë¹¨ê°„ìƒ‰
         else
         {
-            // ÇÏ¾á»ö
+            // í•˜ì–€ìƒ‰
             img.color = Color.white;
         }
 
-        // ¼º°ø¿©ºÎ Ã¼Å©
+        // ì„±ê³µì—¬ë¶€ ì²´í¬
         int count = 0;
 
         for (int i = 0; i < images.Length; i++)
@@ -78,12 +78,12 @@ public class Mission1 : MonoBehaviour
 
         if(count == images.Length)
         {
-            // ¼º°ø
+            // ì„±ê³µ
             Invoke("MissionSuccess", 0.2f);
         }
     }
 
-    // ¹Ì¼Ç ¼º°øÇÏ¸é È£Ãâ
+    // ë¯¸ì…˜ ì„±ê³µí•˜ë©´ í˜¸ì¶œ
     public void MissionSuccess()
     {
         ClickCancle();

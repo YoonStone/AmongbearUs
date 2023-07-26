@@ -31,7 +31,7 @@ public class Mission2 : MonoBehaviour
     {
         if (isPlay)
         {
-            // µå·¡±×
+            // ë“œë˜ê·¸
             if (isDrag)
             {
                 handle.position = Input.mousePosition;
@@ -39,7 +39,7 @@ public class Mission2 : MonoBehaviour
 
                 anim_shake.enabled = true;
 
-                // µå·¡±× ³¡
+                // ë“œë˜ê·¸ ë
                 if (Input.GetMouseButtonUp(0))
                 {
                     rect_handle.anchoredPosition = originPos;
@@ -48,7 +48,7 @@ public class Mission2 : MonoBehaviour
                 }
             }
 
-            // ¾²·¹±â ¹èÃâ
+            // ì“°ë ˆê¸° ë°°ì¶œ
             if (rect_handle.anchoredPosition.y <= -130)
             {
                 bottom.SetActive(false);
@@ -58,7 +58,7 @@ public class Mission2 : MonoBehaviour
                 bottom.SetActive(true);
             }
 
-            // ¾²·¹±â »èÁ¦
+            // ì“°ë ˆê¸° ì‚­ì œ
             for (int i = 0; i < trash.childCount; i++)
             {
                 if (trash.GetChild(i).GetComponent<RectTransform>().anchoredPosition.y <= -600)
@@ -67,36 +67,40 @@ public class Mission2 : MonoBehaviour
                 }
             }
 
-            // ¼º°ø¿©ºÎ Ã¼Å©
+            // ì„±ê³µì—¬ë¶€ ì²´í¬
             if (trash.childCount == 0)
             {
                 MissionSuccess();
                 isPlay = false;
+
+                rect_handle.anchoredPosition = originPos;
+                isDrag = false;
+                anim_shake.enabled = false;
             }
         }
     }
 
-    // ¹Ì¼Ç ½ÃÀÛ
+    // ë¯¸ì…˜ ì‹œì‘
     public void MissionStart()
     {
         anim.SetBool("isUp", true);
         playerCtrl_script = FindObjectOfType<PlayerCtrl>();
 
-        // ÃÊ±âÈ­
+        // ì´ˆê¸°í™”
         for (int i = 0; i < trash.childCount; i++)
         {
             Destroy(trash.GetChild(i).gameObject);
         }
 
-        // ¾²·¹±â ½ºÆù
+        // ì“°ë ˆê¸° ìŠ¤í°
         for (int i = 0; i < 10; i++)
         {
-            // »ç°ú
+            // ì‚¬ê³¼
             GameObject trash4 = Instantiate(Resources.Load("Trash/Trash 4"), trash) as GameObject;
             trash4.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-180, 180), Random.Range(-180, 180));
             trash4.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 0, Random.Range(0, 180));
 
-            // Äµ
+            // ìº”
             GameObject trash5 = Instantiate(Resources.Load("Trash/Trash 5"), trash) as GameObject;
             trash5.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-180, 180), Random.Range(-180, 180));
             trash5.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 0, Random.Range(0, 180));
@@ -104,17 +108,17 @@ public class Mission2 : MonoBehaviour
 
         for (int i = 0; i < 3; i++)
         {
-            // º´
+            // ë³‘
             GameObject trash1 = Instantiate(Resources.Load("Trash/Trash 1"), trash) as GameObject;
             trash1.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-180, 180), Random.Range(-180, 180));
             trash1.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 0, Random.Range(0, 180));
 
-            // »ı¼±
+            // ìƒì„ 
             GameObject trash2 = Instantiate(Resources.Load("Trash/Trash 2"), trash) as GameObject;
             trash2.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-180, 180), Random.Range(-180, 180));
             trash2.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 0, Random.Range(0, 180));
 
-            // ºñ´Ò
+            // ë¹„ë‹
             GameObject trash3 = Instantiate(Resources.Load("Trash/Trash 3"), trash) as GameObject;
             trash3.GetComponent<RectTransform>().anchoredPosition = new Vector2(Random.Range(-180, 180), Random.Range(-180, 180));
             trash3.GetComponent<RectTransform>().eulerAngles = new Vector3(0, 0, Random.Range(0, 180));
@@ -123,20 +127,20 @@ public class Mission2 : MonoBehaviour
         isPlay = true;
     }
 
-    // ¿¢½º¹öÆ° ´©¸£¸é È£Ãâ
+    // ì—‘ìŠ¤ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickCancle()
     {
         anim.SetBool("isUp", false);
         playerCtrl_script.MissionEnd();
     }
 
-    // ¼ÕÀâÀÌ ´©¸£¸é È£Ãâ
+    // ì†ì¡ì´ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickHandle()
     {
         isDrag = true;
     }
 
-    // ¹Ì¼Ç ¼º°øÇÏ¸é È£Ãâ
+    // ë¯¸ì…˜ ì„±ê³µí•˜ë©´ í˜¸ì¶œ
     public void MissionSuccess()
     {
         ClickCancle();

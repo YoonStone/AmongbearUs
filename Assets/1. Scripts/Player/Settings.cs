@@ -18,21 +18,21 @@ public class Settings : MonoBehaviour
         playView = playerCtrl_script.playView;
     }
 
-    // ¼³Á¤¹öÆ°À» ´©¸£¸é È£Ãâ
+    // ì„¤ì •ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickSetting()
     {
         gameObject.SetActive(true);
         playerCtrl_script.isCantMove = true;
     }
 
-    // °ÔÀÓÀ¸·Î µ¹¾Æ°¡±â ¹öÆ°À» ´©¸£¸é È£Ãâ
+    // ê²Œì„ìœ¼ë¡œ ëŒì•„ê°€ê¸° ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickBack()
     {
         gameObject.SetActive(false);
         playerCtrl_script.isCantMove = false;
     }
 
-    // ÅÍÄ¡ÀÌµ¿À» ´©¸£¸é È£Ãâ
+    // í„°ì¹˜ì´ë™ì„ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickTouch()
     {
         isJoyStick = false;
@@ -40,7 +40,7 @@ public class Settings : MonoBehaviour
         joyStickBtn.color = Color.white;
     }
 
-    // Á¶ÀÌ½ºÆ½À» ´©¸£¸é È£Ãâ
+    // ì¡°ì´ìŠ¤í‹±ì„ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickJoyStick()
     {
         isJoyStick = true;
@@ -48,13 +48,13 @@ public class Settings : MonoBehaviour
         joyStickBtn.color = blue;
     }
 
-    // °ÔÀÓ ³ª°¡±â ¹öÆ°À» ´©¸£¸é È£Ãâ
+    // ê²Œì„ ë‚˜ê°€ê¸° ë²„íŠ¼ì„ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickQuit()
     {
         mainView.SetActive(true);
         playView.SetActive(false);
 
-        // Ä³¸¯ÅÍ »èÁ¦
+        // ìºë¦­í„° ì‚­ì œ
         playerCtrl_script.DestroyPlayer();
     }
 }

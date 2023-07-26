@@ -29,16 +29,16 @@ public class Mission5 : MonoBehaviour
     {
         if (isPlay)
         {
-            // µå·¡±×
+            // ë“œë˜ê·¸
             if (isDrag)
             {
                 handle.position = Input.mousePosition;
                 rect_handle.anchoredPosition = new Vector2(184, Mathf.Clamp(rect_handle.anchoredPosition.y, -195, 195));
 
-                // µå·¡±× ³¡
+                // ë“œë˜ê·¸ ë
                 if (Input.GetMouseButtonUp(0))
                 {
-                    // ¼º°ø¿©ºÎ Ã¼Å©
+                    // ì„±ê³µì—¬ë¶€ ì²´í¬
                     if(rect_handle.anchoredPosition.y > -5 && rect_handle.anchoredPosition.y < 5)
                     {
                         Invoke("MissionSuccess", 0.2f);
@@ -51,7 +51,7 @@ public class Mission5 : MonoBehaviour
 
             rotate.eulerAngles = new Vector3(0, 0, 90 * rect_handle.anchoredPosition.y / 195);
 
-            // »ö º¯°æ
+            // ìƒ‰ ë³€ê²½
             if (rect_handle.anchoredPosition.y > -5 && rect_handle.anchoredPosition.y < 5)
             {
                 rotate.GetComponent<Image>().color = blue;
@@ -63,16 +63,16 @@ public class Mission5 : MonoBehaviour
         }
     }
 
-    // ¹Ì¼Ç ½ÃÀÛ
+    // ë¯¸ì…˜ ì‹œì‘
     public void MissionStart()
     {
         anim.SetBool("isUp", true);
         playerCtrl_script = FindObjectOfType<PlayerCtrl>();
 
-        // ÃÊ±âÈ­
+        // ì´ˆê¸°í™”
         rand = 0;
 
-        // ·£´ı
+        // ëœë¤
         rand = Random.Range(-195, 195);
 
         while(rand <=-10 && rand <= 10)
@@ -84,20 +84,20 @@ public class Mission5 : MonoBehaviour
         isPlay = true;
     }
 
-    // ¿¢½º¹öÆ° ´©¸£¸é È£Ãâ
+    // ì—‘ìŠ¤ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickCancle()
     {
         anim.SetBool("isUp", false);
         playerCtrl_script.MissionEnd();
     }
 
-    // ¼ÕÀâÀÌ ´©¸£¸é È£Ãâ
+    // ì†ì¡ì´ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickHandle()
     {
         isDrag = true;
     }
 
-    // ¹Ì¼Ç ¼º°øÇÏ¸é È£Ãâ
+    // ë¯¸ì…˜ ì„±ê³µí•˜ë©´ í˜¸ì¶œ
     public void MissionSuccess()
     {
         ClickCancle();

@@ -29,32 +29,32 @@ public class Mission6 : MonoBehaviour
 
     private void Update()
     {
-        // µå·¡±×
+        // ë“œë˜ê·¸
         if (isDrag)
         {
             line.SetPosition(1, new Vector3((Input.mousePosition.x - clickPos.x) * 1920f / Screen.width, (Input.mousePosition.y - clickPos.y) * 1080f / Screen.height, -10));
 
-            // µå·¡±× ³¡
+            // ë“œë˜ê·¸ ë
             if (Input.GetMouseButtonUp(0))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
                 RaycastHit hit;
 
-                // ¿À¸¥ÂÊ ¼±¿¡ ´ê¾Ò´Ù¸é
+                // ì˜¤ë¥¸ìª½ ì„ ì— ë‹¿ì•˜ë‹¤ë©´
                 if (Physics.Raycast(ray, out hit))
                 {
                     GameObject rightLine = hit.transform.gameObject;
 
-                    // ¿À¸¥ÂÊ ¼± y°ª
+                    // ì˜¤ë¥¸ìª½ ì„  yê°’
                     rightY = rightLine.GetComponent<RectTransform>().anchoredPosition.y;
 
-                    // ¿À¸¥ÂÊ ¼± »ö»ó
+                    // ì˜¤ë¥¸ìª½ ì„  ìƒ‰ìƒ
                     rightC = rightLine.GetComponent<Image>().color;
 
                     line.SetPosition(1, new Vector3(500, rightY - leftY, -10));
 
-                    // »ö ºñ±³
+                    // ìƒ‰ ë¹„êµ
                     if(leftC == rightC)
                     {
                         switch (leftY)
@@ -76,14 +76,14 @@ public class Mission6 : MonoBehaviour
                         }
                     }
 
-                    // ¼º°ø¿©ºÎ Ã¼Å©
+                    // ì„±ê³µì—¬ë¶€ ì²´í¬
                     if(isColor[0] && isColor[1] && isColor[2] && isColor[3])
                     {
                         Invoke("MissionSuccess", 0.2f);
                     }
                 }
 
-                // ´êÁö ¾Ê¾Ò´Ù¸é
+                // ë‹¿ì§€ ì•Šì•˜ë‹¤ë©´
                 else
                 {
                     line.SetPosition(1, new Vector3(0, 0, -10));
@@ -94,20 +94,20 @@ public class Mission6 : MonoBehaviour
         }
     }
 
-    // ¹Ì¼Ç ½ÃÀÛ
+    // ë¯¸ì…˜ ì‹œì‘
     public void MissionStart()
     {
         anim.SetBool("isUp", true);
         playerCtrl_script = FindObjectOfType<PlayerCtrl>();
 
-        // ÃÊ±âÈ­
+        // ì´ˆê¸°í™”
         for (int i = 0; i < 4; i++)
         {
             isColor[i] = false;
             lines[i].SetPosition(1, new Vector3(0, 0, -10));
         }
 
-        // ·£´ı
+        // ëœë¤
         for (int i = 0; i < rights.Length; i++)
         {
             Vector3 temp = rights[i].anchoredPosition;
@@ -119,29 +119,29 @@ public class Mission6 : MonoBehaviour
         }
     }
 
-    // ¿¢½º¹öÆ° ´©¸£¸é È£Ãâ
+    // ì—‘ìŠ¤ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickCancle()
     {
         anim.SetBool("isUp", false);
         playerCtrl_script.MissionEnd();
     }
 
-    // ¼± ´©¸£¸é È£Ãâ
+    // ì„  ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickLine(LineRenderer click)
     {
         clickPos = Input.mousePosition;
         line = click;
 
-        // ¿ŞÂÊ ¼± y°ª
+        // ì™¼ìª½ ì„  yê°’
         leftY = click.transform.parent.GetComponent<RectTransform>().anchoredPosition.y;
 
-        // ¿ŞÂÊ ¼± »ö»ó
+        // ì™¼ìª½ ì„  ìƒ‰ìƒ
         leftC = click.transform.parent.GetComponent<Image>().color;
 
         isDrag = true;
     }
 
-    // ¹Ì¼Ç ¼º°øÇÏ¸é È£Ãâ
+    // ë¯¸ì…˜ ì„±ê³µí•˜ë©´ í˜¸ì¶œ
     public void MissionSuccess()
     {
         ClickCancle();

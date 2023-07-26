@@ -18,31 +18,31 @@ public class Mission3 : MonoBehaviour
         missionCtrl_script = FindObjectOfType<MissionCtrl>();
     }
 
-    // ¹Ì¼Ç ½ÃÀÛ
+    // ë¯¸ì…˜ ì‹œì‘
     public void MissionStart()
     {
         anim.SetBool("isUp", true);
         playerCtrl_script = FindObjectOfType<PlayerCtrl>();
 
-        // ÃÊ±âÈ­
+        // ì´ˆê¸°í™”
         inputText.text = "";
         keyCode.text = "";
 
-        // Å°ÄÚµå ·£´ı
+        // í‚¤ì½”ë“œ ëœë¤
         for (int i = 0; i < 5; i++)
         {
             keyCode.text += Random.Range(0, 10);
         }
     }
 
-    // ¿¢½º¹öÆ° ´©¸£¸é È£Ãâ
+    // ì—‘ìŠ¤ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickCancle()
     {
         anim.SetBool("isUp", false);
         playerCtrl_script.MissionEnd();
     }
 
-    // ¼ıÀÚ¹öÆ° ´©¸£¸é È£Ãâ
+    // ìˆ«ìë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickNumber()
     {
         if(inputText.text.Length <= 4)
@@ -51,7 +51,7 @@ public class Mission3 : MonoBehaviour
         }
     }
 
-    // »èÁ¦¹öÆ° ´©¸£¸é È£Ãâ
+    // ì‚­ì œë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickDelete()
     {
         if(inputText.text != "")
@@ -60,7 +60,7 @@ public class Mission3 : MonoBehaviour
         }
     }
 
-    // Ã¼Å© ¹öÆ° ´©¸£¸é È£Ãâ
+    // ì²´í¬ ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickCheck()
     {
         if(inputText.text == keyCode.text)
@@ -69,7 +69,7 @@ public class Mission3 : MonoBehaviour
         }
     }
 
-    // ¹Ì¼Ç ¼º°øÇÏ¸é È£Ãâ
+    // ë¯¸ì…˜ ì„±ê³µí•˜ë©´ í˜¸ì¶œ
     public void MissionSuccess()
     {
         ClickCancle();

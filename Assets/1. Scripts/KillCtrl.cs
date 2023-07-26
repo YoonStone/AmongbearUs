@@ -11,7 +11,7 @@ public class KillCtrl : MonoBehaviour
 
     int count;
 
-    // ÃÊ±âÈ­
+    // ì´ˆê¸°í™”
     public void KillReset()
     {
         kill_anim.SetActive(false);
@@ -30,19 +30,19 @@ public class KillCtrl : MonoBehaviour
         NPCSpawn();
     }
 
-    // NPC ½ºÆù
+    // NPC ìŠ¤í°
     public void NPCSpawn()
     {
         int rand = Random.Range(0, 10);
 
         for (int i = 0; i < 5;)
         {
-            // Áßº¹µÇ¾ú´Ù¸é
+            // ì¤‘ë³µë˜ì—ˆë‹¤ë©´
             if (number.Contains(rand))
             {
                 rand = Random.Range(0, 10);
             }
-            // Áßº¹µÇÁö ¾Ê¾Ò´Ù¸é
+            // ì¤‘ë³µë˜ì§€ ì•Šì•˜ë‹¤ë©´
             else
             {
                 number.Add(rand);
@@ -50,14 +50,14 @@ public class KillCtrl : MonoBehaviour
             }
         }
 
-        // ½ºÆù
+        // ìŠ¤í°
         for (int i = 0; i < number.Count; i++)
         {
             Instantiate(Resources.Load("NPC"), spawnPoints[number[i]]);
         }
     }
 
-    // Å³ ÇÏ¸é È£Ãâ
+    // í‚¬ í•˜ë©´ í˜¸ì¶œ
     public void Kill()
     {
         count++;
@@ -70,13 +70,13 @@ public class KillCtrl : MonoBehaviour
     }
 
 
-    // È­¸é ÀüÈ¯
+    // í™”ë©´ ì „í™˜
     public void Change()
     {
         mainView.SetActive(true);
         gameObject.SetActive(false);
 
-        // Ä³¸¯ÅÍ »èÁ¦
+        // ìºë¦­í„° ì‚­ì œ
         FindObjectOfType<PlayerCtrl>().DestroyPlayer();
     }
 }

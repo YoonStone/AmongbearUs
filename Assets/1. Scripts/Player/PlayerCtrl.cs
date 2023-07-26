@@ -30,7 +30,7 @@ public class PlayerCtrl : MonoBehaviour
         Camera.main.transform.parent = transform;
         Camera.main.transform.localPosition = new Vector3(0, 0, -10);
 
-        // ¹Ì¼ÇÀÌ¶ó¸é
+        // ë¯¸ì…˜ì´ë¼ë©´
         if (isMission)
         {
             btn.GetComponent<Image>().sprite = use;
@@ -38,7 +38,7 @@ public class PlayerCtrl : MonoBehaviour
             text_cool.text = "";
         }
 
-        // Å³ Äù½ºÆ®¶ó¸é
+        // í‚¬ í€˜ìŠ¤íŠ¸ë¼ë©´
         else
         {
             killCtrl_script = FindObjectOfType<KillCtrl>();
@@ -52,7 +52,7 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Update()
     {
-        // ÄğÅ¸ÀÓ
+        // ì¿¨íƒ€ì„
         if (isCool)
         {
             timer -= Time.deltaTime;
@@ -74,7 +74,7 @@ public class PlayerCtrl : MonoBehaviour
             Move();
         }
 
-        // ¾Ö´Ï¸ŞÀÌ¼ÇÀÌ ³¡³µ´Ù¸é
+        // ì• ë‹ˆë©”ì´ì…˜ì´ ëë‚¬ë‹¤ë©´
         if(isAnim && killCtrl_script.kill_anim.GetComponent<Animator>().GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
         {
             killCtrl_script.kill_anim.SetActive(false);
@@ -84,7 +84,7 @@ public class PlayerCtrl : MonoBehaviour
         }
     }
 
-    // Ä³¸¯ÅÍ ¿òÁ÷ÀÓ °ü¸®
+    // ìºë¦­í„° ì›€ì§ì„ ê´€ë¦¬
     void Move()
     {
         if (settings_script.isJoyStick)
@@ -95,7 +95,7 @@ public class PlayerCtrl : MonoBehaviour
         {
             joyStick.SetActive(false);
 
-            // Å¬¸¯Çß´ÂÁö ÆÇ´Ü
+            // í´ë¦­í–ˆëŠ”ì§€ íŒë‹¨
             if (Input.GetMouseButton(0))
             {
 #if UNITY_EDITOR
@@ -107,13 +107,13 @@ public class PlayerCtrl : MonoBehaviour
 
                     anim.SetBool("isWalk", true);
 
-                    // ¿ŞÂÊÀ¸·Î ÀÌµ¿
+                    // ì™¼ìª½ìœ¼ë¡œ ì´ë™
                     if (dir.x < 0)
                     {
                         transform.localScale = new Vector3(-1, 1, 1);
                     }
 
-                    // ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿
+                    // ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™
                     else
                     {
                         transform.localScale = new Vector3(1, 1, 1);
@@ -128,13 +128,13 @@ if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
 
                     anim.SetBool("isWalk", true);
 
-                    // ¿ŞÂÊÀ¸·Î ÀÌµ¿
+                    // ì™¼ìª½ìœ¼ë¡œ ì´ë™
                     if (dir.x < 0)
                     {
                         transform.localScale = new Vector3(-1, 1, 1);
                     }
 
-                    // ¿À¸¥ÂÊÀ¸·Î ÀÌµ¿
+                    // ì˜¤ë¥¸ìª½ìœ¼ë¡œ ì´ë™
                     else
                     {
                         transform.localScale = new Vector3(1, 1, 1);
@@ -142,7 +142,7 @@ if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
                 }
 #endif
             }
-            // Å¬¸¯ÇÏÁö ¾Ê´Â´Ù¸é
+            // í´ë¦­í•˜ì§€ ì•ŠëŠ”ë‹¤ë©´
             else
             {
                 anim.SetBool("isWalk", false);
@@ -150,7 +150,7 @@ if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
         }
     }
 
-    // Ä³¸¯ÅÍ »èÁ¦
+    // ìºë¦­í„° ì‚­ì œ
     public void DestroyPlayer()
     {
         Camera.main.transform.parent = null;
@@ -192,17 +192,17 @@ if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
         }
     }
 
-    // ¹öÆ° ´©¸£¸é È£Ãâ
+    // ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickButton()
     {
-        // ¹Ì¼ÇÀÏ ¶§
+        // ë¯¸ì…˜ì¼ ë•Œ
         if (isMission)
         {
-            // MissionStart¸¦ È£Ãâ
+            // MissionStartë¥¼ í˜¸ì¶œ
             coll.SendMessage("MissionStart");
         }
 
-        // Å³ Äù½ºÆ®ÀÏ ¶§
+        // í‚¬ í€˜ìŠ¤íŠ¸ì¼ ë•Œ
         else
         {
             Kill();
@@ -214,18 +214,18 @@ if (!EventSystem.current.IsPointerOverGameObject(Input.GetTouch(0).fingerId))
 
     void Kill()
     {
-        // Á×ÀÌ´Â ¾Ö´Ï¸ŞÀÌ¼Ç
+        // ì£½ì´ëŠ” ì• ë‹ˆë©”ì´ì…˜
         killCtrl_script.kill_anim.SetActive(true);
         isAnim = true;
 
-        // Á×Àº ÀÌ¹ÌÁö º¯°æ
+        // ì£½ì€ ì´ë¯¸ì§€ ë³€ê²½
         coll.SendMessage("Dead");
 
-        // Á×Àº NPC´Â ´Ù½Ã Á×ÀÏ ¼ö ¾ø°Ô
+        // ì£½ì€ NPCëŠ” ë‹¤ì‹œ ì£½ì¼ ìˆ˜ ì—†ê²Œ
         coll.GetComponent<CircleCollider2D>().enabled = false;
     }
 
-    // ¹Ì¼Ç Á¾·áÇÏ¸é È£Ãâ
+    // ë¯¸ì…˜ ì¢…ë£Œí•˜ë©´ í˜¸ì¶œ
     public void MissionEnd()
     {
         isCantMove = false;

@@ -11,7 +11,7 @@ public class MissionCtrl : MonoBehaviour
 
     int missionCount;
 
-    // ¹Ì¼Ç ÃÊ±âÈ­
+    // ë¯¸ì…˜ ì´ˆê¸°í™”
     public void MissionReset()
     {
         guage.value = 0;
@@ -25,17 +25,17 @@ public class MissionCtrl : MonoBehaviour
         text_anim.SetActive(false);
     }
 
-    // ¹Ì¼Ç ¼º°øÇÏ¸é È£Ãâ
+    // ë¯¸ì…˜ ì„±ê³µí•˜ë©´ í˜¸ì¶œ
     public void MissionSuccess(CircleCollider2D coll)
     {
         missionCount++;
 
         guage.value = missionCount / 7f;
 
-        // ¼º°øÇÑ ¹Ì¼ÇÀº ´Ù½Ã ÇÃ·¹ÀÌ X
+        // ì„±ê³µí•œ ë¯¸ì…˜ì€ ë‹¤ì‹œ í”Œë ˆì´ X
         coll.enabled = false;
 
-        // ¼º°ø¿©ºÎ Ã¼Å©
+        // ì„±ê³µì—¬ë¶€ ì²´í¬
         if(guage.value == 1)
         {
             text_anim.SetActive(true);
@@ -44,13 +44,13 @@ public class MissionCtrl : MonoBehaviour
         }
     }
 
-    // È­¸é ÀüÈ¯
+    // í™”ë©´ ì „í™˜
     public void Change()
     {
         mainView.SetActive(true);
         gameObject.SetActive(false);
 
-        // Ä³¸¯ÅÍ »èÁ¦
+        // ìºë¦­í„° ì‚­ì œ
         FindObjectOfType<PlayerCtrl>().DestroyPlayer();
     }
 }

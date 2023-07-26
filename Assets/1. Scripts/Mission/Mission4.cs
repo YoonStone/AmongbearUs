@@ -21,20 +21,20 @@ public class Mission4 : MonoBehaviour
         missionCtrl_script = FindObjectOfType<MissionCtrl>();
     }
 
-    // ¹Ì¼Ç ½ÃÀÛ
+    // ë¯¸ì…˜ ì‹œì‘
     public void MissionStart()
     {
         anim.SetBool("isUp", true);
         playerCtrl_script = FindObjectOfType<PlayerCtrl>();
 
-        // ÃÊ±âÈ­
+        // ì´ˆê¸°í™”
         for (int i = 0; i < numbers.childCount; i++)
         {
             numbers.GetChild(i).GetComponent<Image>().color = Color.white;
             numbers.GetChild(i).GetComponent<Button>().enabled = true;
         }
 
-        // ¼ıÀÚ ·£´ı ¹èÄ¡
+        // ìˆ«ì ëœë¤ ë°°ì¹˜
         for (int i = 0; i < 10; i++)
         {
             Sprite temp = numbers.GetChild(i).GetComponent<Image>().sprite;
@@ -48,27 +48,27 @@ public class Mission4 : MonoBehaviour
         count = 1;
     }
 
-    // ¿¢½º¹öÆ° ´©¸£¸é È£Ãâ
+    // ì—‘ìŠ¤ë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickCancle()
     {
         anim.SetBool("isUp", false);
         playerCtrl_script.MissionEnd();
     }
 
-    // ¼ıÀÚ¹öÆ° ´©¸£¸é È£Ãâ
+    // ìˆ«ìë²„íŠ¼ ëˆ„ë¥´ë©´ í˜¸ì¶œ
     public void ClickNumber()
     {
         if(count.ToString() == EventSystem.current.currentSelectedGameObject.GetComponent<Image>().sprite.name)
         {
-            // »ö º¯°æ
+            // ìƒ‰ ë³€ê²½
             EventSystem.current.currentSelectedGameObject.GetComponent<Image>().color = blue;
 
-            // ¹öÆ° ºñÈ°¼ºÈ­
+            // ë²„íŠ¼ ë¹„í™œì„±í™”
             EventSystem.current.currentSelectedGameObject.GetComponent<Button>().enabled = false;
 
             count++;
 
-            // ¼º°ø¿©ºÎ Ã¼Å©
+            // ì„±ê³µì—¬ë¶€ ì²´í¬
             if(count == 11)
             {
                 Invoke("MissionSuccess", 0.2f);
@@ -76,7 +76,7 @@ public class Mission4 : MonoBehaviour
         }
     }
 
-    // ¹Ì¼Ç ¼º°øÇÏ¸é È£Ãâ
+    // ë¯¸ì…˜ ì„±ê³µí•˜ë©´ í˜¸ì¶œ
     public void MissionSuccess()
     {
         ClickCancle();
